@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,700|Grand+Hotel');
+
+@import './partials/variables';
+@import './partials/global';
+@import './partials/mixins';
+
+// Navbar
+
+// Header
+.header {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('../images/main-bcg.jpeg') center/cover no-repeat;
+  height: 100vh;
+
+  .banner {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    margin-top: -80px;
+
+    .banner-info {
+      text-align: center;
+    }
+  }
+
+  .banner .banner-info h1 {
+    color: $color-white;
+    margin-bottom: 2rem;
+  }
+  .banner .banner-info h2 {
+    color: $color-primary-light;
+    font-family: $font-secondary;
+    font-weight: 300;
+  }
+  .banner .banner-info h1 > span {
+    display: block;
+  }
+  .banner .banner-info .banner-btn {
+    @include btn;
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+}
+
+// navbar
+
+.nav-links {
+  display: none;
+}
+.nav {
+  height: 5rem;
+  padding: 1rem;
+  display: grid;
+  align-items: center;
+  transition: $transition;
+}
+.nav-center {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.nav-header {
+  display: grid;
+  grid-template-columns: auto;
+  justify-self: end;
+  align-items: center;
+}
+.nav-btn {
+  background: transparent;
+  border-color: transparent;
+  color: $color-primary;
+  font-size: 2rem;
+  cursor: pointer;
+  justify-self: end;
+}
+@media screen and (min-width: 768px) {
+  .nav {
+    background: transparent;
+  }
+  .nav-btn {
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    column-gap: 2rem;
+  }
+  .nav-links a {
+    text-transform: capitalize;
+    color: $color-white;
+    font-weight: 900;
+    font-size: 1.5rem;
+    font-family: $font-secondary;
+    letter-spacing: $spacing;
+    transition: $transition;
+  }
+  .nav-links a:hover {
+    color: $color-primary-light;
+  }
+  .nav-center {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+}
+
+/*
+  =============== 
+  Sidebar
+  ===============
+  */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color-grey-10;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  transition: $transition;
+  /* add later */
+  transform: translateX(-100%);
+}
+/* toggle sidebar */
+.show-sidebar {
+  transform: translateX(0);
+}
+.sidebar-links {
+  text-align: center;
+}
+.sidebar-links a {
+  font-size: 2rem;
+  text-transform: capitalize;
+  transition: $transition;
+  color: $color-grey-5;
+  letter-spacing: $spacing;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+.sidebar-links a:hover {
+  color: $color-primary-light;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  background: transparent;
+  border: transparent;
+  transition: $transition;
+  color: #bb2525;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: #e66b6b;
+}
+
+// Content divider
+
+.content-divider {
+  height: 0.5rem;
+  background: linear-gradient(to left, $color-primary, $color-primary-light);
+}
+
+// Skills
+
+.skills {
+  display: grid;
+
+  .skill-icon {
+    text-align: center;
+    padding: 2rem 1rem;
+    i {
+      color: $color-primary;
+      font-size: 2rem;
+    }
+    &:hover {
+      background-color: $color-grey-10;
+      transition: $transition;
+      border-bottom: 3px solid $color-primary;
+    }
+  }
+  .skill-text {
+    max-width: 17rem;
+    margin: 0 auto;
+  }
+  .skill-title {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1092px) {
+  .skills {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// About us
+
+.about {
+  display: grid;
+  row-gap: 3rem;
+  text-align: left;
+  .about-text {
+    h2 {
+      font-family: $font-secondary;
+      color: $color-primary;
+    }
+    .about-btn {
+      @include btn;
+    }
+  }
+
+  .about-img {
+    border: 5px solid $color-primary;
+    overflow: hidden;
+    height: 100%;
+    img {
+      transition: $transition;
+      height: 100%;
+      object-fit: cover;
+    }
+    &:hover img {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .about {
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    column-gap: 2rem;
+    .about-text p:nth-child(2) {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+// our products
+
+.products {
+  background-color: $color-grey-10;
+  .products-text {
+    h2 {
+      font-family: $font-secondary;
+      color: $color-primary;
+    }
+    .products-btn {
+      @include btn;
+    }
+  }
+  .products-img img {
+    border-radius: $radius;
+  }
+  .products-body {
+    display: grid;
+    gap: 3rem;
+    .product-price {
+      color: $color-primary;
+      font-weight: bold;
+    }
+  }
+  .products-img h4 {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .products-body {
+    grid-template-columns: 350px 1fr;
+  }
+  .products-img {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+  }
+  .product-img-1 img,
+  .product-img-2 img,
+  .product-img-3 img {
+    height: 300px;
+    object-fit: cover;
+  }
+}
+
+// Our Services
+
+.services {
+  h2 {
+    color: $color-primary;
+    font-family: $font-secondary;
+  }
+  .cards {
+    display: grid;
+    gap: 2rem;
+  }
+  .service {
+    background-color: $color-grey-10;
+    border-radius: $radius;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    img {
+      border-top-right-radius: $radius;
+      border-top-left-radius: $radius;
+      object-fit: cover;
+    }
+  }
+  .service-title {
+    margin-top: 1rem;
+  }
+  .service-text {
+    padding: 3rem 1rem;
+  }
+  .service-btn {
+    @include btn;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .services {
+    h2,
+    h1 {
+      text-align: center;
+    }
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .service {
+    img {
+      transition: $transition;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+// Contact us
+
+.contact {
+  background-color: $color-grey-10;
+  .address h5,
+  .email h5,
+  .telephone h5 {
+    color: $color-primary;
+    text-transform: capitalize;
+    padding-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .contact-body {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .card {
+    background-color: $color-white;
+    border-radius: $radius;
+  }
+
+  .card h2 {
+    text-align: center;
+    color: $color-grey-5;
+    padding-top: 2rem;
+  }
+  .form-items input,
+  .form-items textarea {
+    background-color: $color-grey-10;
+    padding: 0.7rem;
+    border: none;
+    border-radius: $radius;
+    text-transform: capitalize;
+    letter-spacing: $spacing;
+    font-family: $font-primary;
+  }
+  .form-items input:focus,
+  .form-items textarea:focus {
+    border: none;
+    outline: 2px solid $color-primary;
+  }
+  .form-items {
+    display: grid;
+    padding: 2rem 1rem;
+    gap: 1rem;
+    margin-top: -25px;
+  }
+  .btn-submit {
+    @include btn;
+    border: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .contact-body {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    .contact-info {
+      align-self: center;
+    }
+  }
+}
+
+// Footer
+
+.footer {
+  background-color: #333;
+  .footer-icons {
+    max-width: 15rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+    color: $color-white;
+    .facebook,
+    .twitter,
+    .instagram {
+      transition: $transition;
+      cursor: pointer;
+    }
+    .facebook:hover,
+    .twitter:hover,
+    .instagram:hover {
+      color: $color-primary;
+    }
+  }
+  .footer-text {
+    text-align: center;
+    color: $color-white;
+    margin-top: 15px;
+  }
+}
